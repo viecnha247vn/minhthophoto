@@ -1,0 +1,49 @@
+---
+permalink: /ve-chung-toi/index.html
+tieu_de: Về chúng tôi
+mo_ta_seo: >
+  Phan Media là thương hiệu nhiếp ảnh của NSNA Phan Minh Thọ — từ ảnh nghệ
+  thuật đến ảnh cưới, theo đuổi cảm xúc chân thật thay vì khuôn mẫu.
+---
+{% extends "base.njk" %}
+
+{% block noi_dung %}
+<header class="page-head">
+  <div class="wrap">
+    <span class="eyebrow">Về chúng tôi</span>
+    <h1>Con người sau ống kính</h1>
+    <p>Phan Media là thương hiệu nhiếp ảnh của NSNA Phan Minh Thọ, theo đuổi vẻ đẹp của những điều bình dị.</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-portrait reveal">
+        <div class="ph">{% bia anh.chan_dung_gioi_thieu, "Chân dung NSNA Phan Minh Thọ trong bộ vest đen, cầm chiếc máy ảnh phim Minolta", "(max-width: 860px) 100vw, 420px" %}</div>
+      </div>
+      <div class="about-body reveal">
+        <p><strong>NSNA Phan Minh Thọ</strong> sinh ra trong một gia đình có truyền thống làm nghề ảnh dịch vụ, nên anh được cầm máy và làm quen với khung hình từ rất sớm.</p>
+
+        <p>Từ năm 2014, anh lấn sân sang ảnh nghệ thuật, dành phần lớn ống kính cho những khoảnh khắc đời thường – con người và cuộc sống quê hương. Tư duy sáng tạo hiện đại nhưng vẫn đậm tính chân thật giúp anh trở thành một trong những gương mặt tiêu biểu của thế hệ nhiếp ảnh trẻ, ghi dấu ấn ở nhiều sân chơi quốc gia.</p>
+
+        <p>Nhờ đó, tư duy nghệ thuật ấy dần được anh đưa vào nhiếp ảnh dịch vụ, đặc biệt là ảnh cưới – nơi mỗi khách hàng, mỗi câu chuyện và mỗi khoảnh khắc đều được nhìn nhận như một chất liệu riêng. Thay vì chỉ tạo nên những bức ảnh đẹp theo khuôn mẫu, anh hướng đến việc ghi lại cảm xúc chân thật, khai thác vẻ đẹp tự nhiên và kể câu chuyện của ngày vui bằng ngôn ngữ hình ảnh giàu sức sống. Chính cách tiếp cận ấy đã mang đến một diện mạo mới cho ảnh cưới tại Phan Media, tạo nên dấu ấn riêng và góp phần làm nên thành công của thương hiệu.</p>
+
+        <blockquote class="quote">Mỗi khung hình là một lần níu giữ thời gian — để điều bình dị hôm nay không trôi mất ngày mai.</blockquote>
+
+        <figure class="about-moment">
+          {% bia "/media/trang/tho-nhan-giai-nhi.webp", "Phan Minh Thọ cầm hoa và bằng khen Giải Nhì, đứng cạnh bảng trưng bày ảnh bộ Tinh hoa võ thuật Bình Định gồm tám khung phơi sáng dài", "(max-width: 860px) 100vw, 640px" %}
+          <figcaption>Nhận Giải Nhì cuộc thi “Bình Định đất và người” 2025 với ảnh bộ <a href="/bo-anh/vo-co-truyen/">Tinh hoa võ thuật Bình Định</a>.</figcaption>
+        </figure>
+
+        <ul class="awards-list">
+          <li><span class="yr">2026</span><div class="d"><div class="nm">Dải lụa cao nguyên</div><div class="ds">Giải Nhất — Cuộc thi “Sắc Xuân Măng Đen”</div></div></li>
+          <li><span class="yr">2025</span><div class="d"><div class="nm">Phía sau điểm số</div><div class="ds">Huy chương Vàng — Festival Nhiếp ảnh trẻ, thể loại ảnh ý tưởng</div></div></li>
+          <li><span class="yr">2025</span><div class="d"><div class="nm">Hoài niệm</div><div class="ds">Giải Nhất — Liên hoan ảnh nghệ thuật truyền thống TP.HCM</div></div></li>
+          <li><span class="yr">2023</span><div class="d"><div class="nm">Hoa trổ trên sông</div><div class="ds">Giải Nhất — Cuộc thi ảnh Bình Định, chủ đề nông nghiệp – nông thôn</div></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

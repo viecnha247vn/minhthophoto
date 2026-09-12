@@ -1,0 +1,5 @@
+{
+  "layout": "bo-anh.njk",
+  "permalink": "/bo-anh/{{ page.fileSlug }}/index.html",
+  "hien": true
+}

@@ -1,0 +1,74 @@
+{
+  "_ghi_chu": "MỌI ĐƯỜNG DẪN ẢNH CỐ ĐỊNH CỦA SITE NẰM Ở ĐÂY. Mục nào còn CHO_THAY_ANH là đang dùng ảnh cũ làm tạm — khi có ảnh mới, chép vào src/media/trang/ rồi sửa đường dẫn ở dưới, không phải đụng template.",
+  "hero": "/media/trang/hinh-nen-web.webp",
+  "chan_dung_ho_so": "/media/trang/chan-dung-minh-tho.webp",
+  "chan_dung_gioi_thieu": "/media/trang/chan-dung-minh-tho.webp",
+  "tac_pham_noi_bat": [
+    {
+      "file": "/media/bo-anh/nghe-thuat/dong-luyen.webp",
+      "ten": "Tinh hoa võ thuật Bình Định (Đồng Luyện)",
+      "giai": "Giải Nhì — Cuộc thi \"Bình Định Đất và Người\" 2025",
+      "alt": "Hai võ sinh trong trang phục đỏ và vàng thi triển bài quyền, phơi sáng dài tạo thành những dải lụa màu lửa trên nền đen"
+    },
+    {
+      "file": "/media/bo-anh/nghe-thuat/dai-lua-cao-nguyen.webp",
+      "ten": "Dải lụa cao nguyên",
+      "giai": "Giải Nhất — Cuộc thi \"Sắc Xuân Măng Đen\" 2026",
+      "alt": "Biển mây trắng phủ kín rừng thông Măng Đen lúc bình minh, những cột điện cao thế nhô lên khỏi lớp sương dưới bầu trời cam vàng"
+    },
+    {
+      "file": "/media/bo-anh/nghe-thuat/the-thao-nghe-thuat-duong-pho.webp",
+      "ten": "Thể thao nghệ thuật đường phố",
+      "giai": "Giải Khuyến khích — Festival Nhiếp ảnh trẻ 2025",
+      "alt": "Người trượt ván giữa cú xoay, phơi sáng dài kéo chuyển động thành những vệt sáng uốn lượn xanh và cam trên nền đen"
+    },
+    {
+      "file": "/media/trang/phia-sau-diem-so.jpg",
+      "ten": "Phía sau điểm số",
+      "giai": "Huy chương Vàng — Festival Nhiếp ảnh trẻ 2025",
+      "alt": "Bộ năm khung về áp lực học hành: bàn tay lớn giật dây điều khiển cô bé ngồi học như con rối, người lớn đút mì và chĩa loa vào tai em, một vòng điện thoại vây quanh em cầm bài kiểm tra điểm 10"
+    },
+    {
+      "file": "/media/bo-anh/nghe-thuat/hoai-niem.webp",
+      "ten": "Hoài niệm",
+      "giai": "Giải Nhất — Liên hoan ảnh nghệ thuật truyền thống TP.HCM 2025",
+      "alt": "Đôi bàn tay già nhăn nheo nâng tấm ảnh thẻ đen trắng chụp một cô gái trẻ tết tóc đang cười"
+    },
+    {
+      "file": "/media/bo-anh/nghe-thuat/hoa-tro-tren-song.webp",
+      "ten": "Hoa trổ trên sông",
+      "giai": "Giải Nhất — Cuộc thi ảnh Bình Định 2023",
+      "alt": "Ảnh flycam đàn vịt trắng dạt thành hình vòng cung quanh chiếc thuyền gỗ chở bốn người trên mặt sông sẫm màu"
+    }
+  ],
+  "dich_vu": [
+    {
+      "so": "01",
+      "ten": "Chân dung & Cá nhân",
+      "mo_ta": "Bộ ảnh cá nhân, gia đình, kỷ yếu — giữ lại nét tự nhiên nhất dưới ánh sáng đời thường.",
+      "file": "/media/bo-anh/chan-dung/ao-dai-tet-01.webp",
+      "alt": "Cô gái mặc áo dài gấm màu cam nhạt cầm quạt giấy, đứng bên bình hoa mai trắng"
+    },
+    {
+      "so": "02",
+      "ten": "Ảnh Cưới",
+      "mo_ta": "Ảnh cưới kể chuyện — không tạo dáng cứng nhắc, mà bắt trọn khoảnh khắc thật.",
+      "file": "/media/bo-anh/anh-cuoi/rung-thong-nguoc-sang.webp",
+      "alt": "Cô dâu váy trắng ngả người tựa vào chú rể trong rừng thông ngược nắng chiều"
+    },
+    {
+      "so": "03",
+      "ten": "Sự kiện",
+      "mo_ta": "Ghi hình sự kiện, lễ hội, hoạt động cộng đồng với góc nhìn tư liệu sống động.",
+      "file": "/media/bo-anh/su-kien/ruoc-nen-dem.webp",
+      "alt": "Đoàn rước nến ban đêm, các nữ tu cầm nến dẫn đầu hàng người"
+    },
+    {
+      "so": "04",
+      "ten": "Doanh nghiệp & Thương mại",
+      "mo_ta": "Ảnh sản phẩm, không gian, hồ sơ thương hiệu — chỉn chu và mang dấu ấn riêng.",
+      "file": "/media/bo-anh/doanh-nghiep/quay-le-tan.webp",
+      "alt": "Quầy lễ tân phòng khám nha khoa với logo thương hiệu trên tường"
+    }
+  ]
+}

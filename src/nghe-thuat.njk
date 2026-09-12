@@ -1,0 +1,84 @@
+---
+permalink: /nghe-thuat/index.html
+tieu_de: Nghệ thuật
+mo_ta_seo: >
+  Các bộ ảnh nghệ thuật của NSNA Phan Minh Thọ — con người, đời thường và
+  cuộc sống xứ biển Tuy Phước, qua ống kính của một gương mặt tiêu biểu
+  thế hệ nhiếp ảnh trẻ.
+---
+{% extends "base.njk" %}
+
+{% block noi_dung %}
+<header class="page-head">
+  <div class="wrap">
+    <span class="eyebrow">Nghệ thuật</span>
+    <h1>Tác phẩm nghệ thuật</h1>
+    <p>Bảy bộ ảnh, xếp theo đề tài — đồng lúa, xứ biển, đất võ, cao nguyên, đức tin, lễ hội và những khung hình ý tưởng. Nhiều tác phẩm trong đây đã dự thi và đoạt giải trong nước lẫn quốc tế; giải thưởng ghi ngay dưới ảnh.</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap">
+    {% set cac_bo = collections.boAnh | theoLoai("nghe-thuat") %}
+
+    {% if cac_bo | length %}
+    <div class="loc" id="loc" role="group" aria-label="Lọc theo chủ đề">
+      <button type="button" class="loc-nut dang-chon" data-chu-de="tat-ca" aria-pressed="true">Tất cả</button>
+      {% for t in ["Con người", "Đời thường", "Xứ biển", "Ảnh ý tưởng"] %}
+      <button type="button" class="loc-nut" data-chu-de="{{ t }}" aria-pressed="false">{{ t }}</button>
+      {% endfor %}
+    </div>
+
+    <div class="bo-luoi" id="boLuoi">
+      {% for b in cac_bo %}
+      {% set alt_bia = b.data | altBia %}
+      <a class="bo-the" href="{{ b.url }}" data-chu-de="{{ b.data.tags | join('|') }}">
+        <div class="bo-the-anh">{% bia b.data.cover, alt_bia %}</div>
+        <div class="bo-the-chu">
+          <h2>{{ b.data.ten }}</h2>
+          <p>{{ b.data.mo_ta }}</p>
+          <p class="bo-the-meta">
+            <span>{{ b.data.anh | length }} ảnh</span>
+            {% if b.data.ngay %}<span>{{ b.data.ngay | nam }}</span>{% endif %}
+          </p>
+          {% if b.data.giai_thuong %}<p class="bo-the-giai">{{ b.data.giai_thuong }}</p>{% endif %}
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+
+    <p class="loc-trong" id="locTrong" hidden>Chưa có bộ ảnh nào thuộc chủ đề này.</p>
+    {% else %}
+    <p class="loc-trong">Các bộ ảnh đang được chuẩn bị. Mời bạn quay lại sau.</p>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}
+
+{% block cuoi_trang %}
+<script>
+// Lọc chủ đề. Không có JS thì mọi bộ ảnh vẫn hiện đủ — chỉ mất nút lọc.
+(function () {
+  var loc = document.getElementById('loc');
+  if (!loc) return;
+  var the = Array.prototype.slice.call(document.querySelectorAll('.bo-the'));
+  var trong = document.getElementById('locTrong');
+  loc.addEventListener('click', function (e) {
+    var nut = e.target.closest('.loc-nut');
+    if (!nut) return;
+    var chon = nut.dataset.chuDe, con = 0;
+    loc.querySelectorAll('.loc-nut').forEach(function (n) {
+      var on = n === nut;
+      n.classList.toggle('dang-chon', on);
+      n.setAttribute('aria-pressed', on);
+    });
+    the.forEach(function (t) {
+      var hop = chon === 'tat-ca' || (t.dataset.chuDe || '').split('|').indexOf(chon) > -1;
+      t.hidden = !hop;
+      if (hop) con++;
+    });
+    trong.hidden = con > 0;
+  });
+})();
+</script>
+{% endblock %}

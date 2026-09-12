@@ -1,0 +1,52 @@
+{% extends "base.njk" %}
+
+{% set tieu_de = ten %}
+{% set mo_ta_seo = mo_ta %}
+{% set og_loai = "article" %}
+{% set og_anh = cover | anhTuyetDoi(site.goc) %}
+
+{% block dau_trang %}
+{# Ảnh đầu tiên là LCP của trang này — nói trước cho trình duyệt biết #}
+<link rel="preload" as="image" href="{{ cover }}" fetchpriority="high" />
+{% endblock %}
+
+{% block noi_dung %}
+<header class="bo-dau">
+  <div class="wrap">
+    {% if loai == "du-an" %}
+    <p class="bo-lui"><a href="/dich-vu/#du-an">Dịch vụ · Dự án đã thực hiện</a></p>
+    {% else %}
+    <p class="bo-lui"><a href="/nghe-thuat/">Nghệ thuật</a></p>
+    {% endif %}
+    <h1>{{ ten }}</h1>
+    <p class="bo-dan">{{ mo_ta }}</p>
+    <p class="bo-meta">
+      <span>{{ anh | length }} ảnh</span>
+      {% if ngay %}<span>{{ ngay | nam }}</span>{% endif %}
+      {% for t in tags %}<span>{{ t }}</span>{% endfor %}
+    </p>
+    {% if giai_thuong %}<p class="bo-giai">{{ giai_thuong }}</p>{% endif %}
+  </div>
+</header>
+
+{% if content %}
+<div class="wrap bo-than">{{ content | safe }}</div>
+{% endif %}
+
+<section class="section">
+  <div class="wrap">
+    <div class="gal" id="gal">
+      {% for a in anh %}{% anh a %}{% endfor %}
+    </div>
+
+    <div class="bo-cuoi">
+      <p>Thích bộ ảnh này? Phan Media nhận chụp theo yêu cầu.</p>
+      <a class="btn btn-primary" href="/lien-he/">Đặt lịch chụp</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block cuoi_trang %}
+<script src="/assets/lightbox.js" defer></script>
+{% endblock %}

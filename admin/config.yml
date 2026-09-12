@@ -1,0 +1,154 @@
+# ============================================================
+#  Sveltia CMS — Phan Media
+#  Đây là "bảng điều khiển" mà anh Thọ nhìn thấy ở /admin
+# ============================================================
+
+backend:
+  name: github
+  repo: TEN-GITHUB/minhtho      # ← ĐỔI: user hoặc org GitHub / tên repo
+  branch: main
+  # Vercel không có sẵn OAuth client như Netlify, nên phải tự dựng một cái.
+  # Deploy sveltia-cms-auth lên Cloudflare Workers (miễn phí, một lần) rồi
+  # dán URL worker vào đây. Các bước ở README.
+  base_url: https://sveltia-cms-auth.TEN-SUBDOMAIN.workers.dev   # ← ĐỔI
+
+# Nơi ảnh được lưu trong repo
+media_folder: src/media/bo-anh
+public_folder: /media/bo-anh
+
+# ---- Tối ưu ảnh NGAY LÚC UPLOAD ----------------------------
+# Đây là lá chắn quan trọng nhất: dù anh Thọ kéo file gốc 8MB
+# từ Lightroom vào, CMS vẫn nén và đổi sang WebP trước khi commit.
+media_libraries:
+  default:
+    config:
+      max_file_size: 26214400     # 25MB — chặn file quá khổ ngay từ đầu
+      slugify_filename: true      # "Ảnh Cưới 01.JPG" -> "anh-cuoi-01.webp"
+      transformations:
+        raster_image:
+          format: webp
+          quality: 82
+          width: 2400             # cạnh dài tối đa; ảnh nhỏ hơn giữ nguyên
+          height: 2400
+
+# Bỏ dấu tiếng Việt khi sinh tên file/URL
+slug:
+  encoding: ascii
+  clean_accents: true
+  sanitize_replacement: "-"
+
+collections:
+  - name: bo-anh
+    label: Bộ ảnh
+    label_singular: Bộ ảnh
+    description: >
+      Mỗi bộ ảnh là một trang riêng trên website. Bấm "Bộ ảnh mới" để tạo,
+      hoặc bấm vào một bộ có sẵn để sửa. Nhớ bấm Publish sau khi xong.
+    folder: src/bo-anh
+    create: true
+    identifier_field: ten
+    slug: "{{slug}}"
+    summary: "{{ten}}"
+    sortable_fields: [ngay, ten]
+    view_filters:
+      - label: Nghệ thuật
+        field: loai
+        pattern: nghe-thuat
+      - label: Dự án
+        field: loai
+        pattern: du-an
+      - label: Đang ẩn
+        field: hien
+        pattern: false
+
+    fields:
+      - label: Tên bộ ảnh
+        name: ten
+        widget: string
+        hint: Ví dụ "Xứ biển". Tên này cũng thành địa chỉ trang, nên đặt ngắn gọn.
+
+      - label: Hiện trên website
+        name: hien
+        widget: boolean
+        default: true
+        hint: Tắt đi nếu muốn lưu nháp mà chưa cho ai xem.
+
+      - label: Thuộc mục
+        name: loai
+        widget: select
+        default: nghe-thuat
+        options:
+          - { label: "Nghệ thuật — tác phẩm, ảnh dự thi", value: nghe-thuat }
+          - { label: "Dự án — ảnh chụp cho khách (cưới, chân dung, sự kiện, doanh nghiệp)", value: du-an }
+        hint: >
+          Nghệ thuật hiện ở trang Nghệ thuật. Dự án hiện ở cuối trang Dịch vụ,
+          để khách xem phong cách trước khi đặt lịch.
+
+      - label: Ngày chụp
+        name: ngay
+        widget: datetime
+        format: "YYYY-MM-DD"
+        date_format: "DD/MM/YYYY"
+        time_format: false
+        hint: Bộ mới nhất sẽ nằm trên cùng trang Nghệ thuật.
+
+      - label: Ảnh bìa
+        name: cover
+        widget: image
+        hint: >
+          Ảnh đại diện cho cả bộ, hiện ở trang Nghệ thuật và khi chia sẻ
+          link lên Facebook/Zalo. Nên chọn ảnh ngang, mạnh nhất trong bộ.
+
+      - label: Chủ đề
+        name: tags
+        widget: select
+        multiple: true
+        required: false
+        options: ["Con người", "Đời thường", "Xứ biển", "Ảnh ý tưởng"]
+
+      - label: Giải thưởng
+        name: giai_thuong
+        widget: string
+        required: false
+        hint: >
+          Bỏ trống nếu bộ này chưa đoạt giải. Ví dụ
+          "Huy chương Vàng — Festival Nhiếp ảnh trẻ 2025".
+
+      - label: Giới thiệu ngắn
+        name: mo_ta
+        widget: text
+        hint: >
+          Một hai câu kể bộ ảnh này chụp gì, ở đâu. Đoạn này hiện dưới tên bộ
+          và là thứ Google đọc để hiểu trang — viết thật, đừng viết chung chung.
+
+      - label: Ảnh trong bộ
+        name: anh
+        widget: list
+        min: 1
+        label_singular: Ảnh
+        summary: "{{fields.alt}}"
+        hint: Kéo thả để đổi thứ tự. Thứ tự ở đây chính là thứ tự trên web.
+        fields:
+          - label: File ảnh
+            name: file
+            widget: image
+
+          - label: Mô tả ảnh
+            name: alt
+            widget: string
+            hint: >
+              Tả bằng một câu ảnh này có gì, ví dụ "Ngư dân kéo lưới lúc rạng
+              sáng ở Tùng Giản". Người khiếm thị nghe câu này, và Google cũng
+              đọc nó để đưa ảnh lên Google Hình ảnh. Đừng ghi "ảnh 01".
+
+          - label: Chú thích hiện dưới ảnh
+            name: chu_thich
+            widget: string
+            required: false
+            hint: Bỏ trống nếu không muốn hiện chữ gì dưới ảnh.
+
+      - label: Lời dẫn dài (không bắt buộc)
+        name: body
+        widget: markdown
+        required: false
+        hint: Nếu muốn kể câu chuyện dài hơn về bộ ảnh thì viết ở đây.

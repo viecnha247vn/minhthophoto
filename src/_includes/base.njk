@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>{{ tieu_de }} · NSNA Phan Minh Thọ — Phan Media</title>
+<meta name="description" content="{{ mo_ta_seo }}" />
+<link rel="canonical" href="{{ site.goc }}{{ page.url }}" />
+
+<meta property="og:type" content="{{ og_loai | default('website') }}" />
+<meta property="og:site_name" content="Phan Media" />
+<meta property="og:locale" content="vi_VN" />
+<meta property="og:title" content="{{ tieu_de }} · NSNA Phan Minh Thọ" />
+<meta property="og:description" content="{{ mo_ta_seo }}" />
+<meta property="og:url" content="{{ site.goc }}{{ page.url }}" />
+<meta property="og:image" content="{{ og_anh | default(site.goc + site.og_mac_dinh) }}" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" href="/favicon.ico" sizes="32x32" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<meta name="theme-color" content="#2a1f17" />
+
+{# Font nạp thẳng ở head thay vì @import trong CSS — nhanh hơn hẳn #}
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap" />
+
+<link rel="stylesheet" href="/assets/style.css" />
+<link rel="stylesheet" href="/assets/gallery.css" />
+{% block dau_trang %}{% endblock %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Phan Media",
+  "image": "{{ site.goc }}{{ site.og_mac_dinh }}",
+  "url": "{{ site.goc }}",
+  "telephone": "{{ site.dien_thoai }}",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Đội 20, Gò Bồi, Tuy Phước Đông",
+    "addressRegion": "Gia Lai",
+    "addressCountry": "VN"
+  },
+  "founder": {
+    "@type": "Person",
+    "name": "Phan Minh Thọ",
+    "jobTitle": "Nghệ sĩ nhiếp ảnh",
+    "sameAs": {{ site.mang_xa_hoi | dump | safe }}
+  }
+}
+</script>
+</head>
+<body>
+
+<a class="bo-qua" href="#noi-dung">Bỏ qua phần đầu trang</a>
+
+<nav class="nav {{ 'solid' if page.url != '/' }}" id="nav">
+  <a class="brand" href="/">
+    <img class="brand-logo" src="/assets/logo.png" alt="" width="620" height="357" />
+    <span class="brand-name">Minh Thọ Photographer</span>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="/"            {{ 'class=active aria-current=page' | safe if page.url == '/' }}>Trang chủ</a>
+    {%- set la_bo = '/bo-anh' in page.url %}
+    <a href="/nghe-thuat/" {{ 'class=active aria-current=page' | safe if '/nghe-thuat' in page.url or (la_bo and loai != 'du-an') }}>Nghệ thuật</a>
+    <a href="/dich-vu/"    {{ 'class=active aria-current=page' | safe if '/dich-vu' in page.url or (la_bo and loai == 'du-an') }}>Dịch vụ</a>
+    <a href="/ve-chung-toi/" {{ 'class=active aria-current=page' | safe if '/ve-chung-toi' in page.url }}>Về chúng tôi</a>
+    <a href="/lien-he/" class="nav-cta {{ 'active' if '/lien-he' in page.url }}">Liên hệ</a>
+  </div>
+  <button class="burger" id="burger" aria-label="Mở menu" aria-expanded="false" aria-controls="navLinks">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<main id="noi-dung">
+{# Trang dùng {% extends %} thì đè block này; trang dùng layout: thì nội dung rơi vào {{ content }} #}
+{% block noi_dung %}{{ content | safe }}{% endblock %}
+</main>
+
+{# Footer giống hệt nhau ở mọi trang — bản cũ mỗi trang một kiểu #}
+<footer class="footer">
+  <div class="wrap footer-in">
+    <div class="fcol">
+      <span class="fb">NSNA Phan Minh Thọ</span>
+      <div class="fnav">
+        <a href="/">Trang chủ</a><a href="/nghe-thuat/">Nghệ thuật</a><a href="/dich-vu/">Dịch vụ</a><a href="/ve-chung-toi/">Về chúng tôi</a><a href="/lien-he/">Liên hệ</a>
+      </div>
+    </div>
+    <div class="fcol fright">
+      <small>© {{ site.nam }} Phan Media · Bắt trọn khoảnh khắc — giữ trọn thời gian.</small>
+      <small class="owner">Thương hiệu thuộc sở hữu của Công ty TNHH Dịch vụ số MT ONE.</small>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="/assets/script.js"></script>
+{% block cuoi_trang %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,154 @@
+/* ============================================================
+   Phan Media — bộ ảnh + lightbox
+   Nạp SAU style.css. Nguyên tắc: ảnh là thứ duy nhất được phép
+   gây chú ý; mọi thứ quanh nó phải im lặng.
+   ============================================================ */
+
+/* ---------- Bỏ qua phần đầu trang (bàn phím) ---------- */
+.bo-qua{position:absolute;left:-9999px;top:0;z-index:100;background:var(--sand);color:var(--ink);
+  padding:12px 20px;border-radius:0 0 3px 0;font-size:.9rem;}
+.bo-qua:focus{left:0;}
+
+/* ---------- LƯỚI BỘ ẢNH (trang Nghệ thuật) ---------- */
+.loc{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:44px;}
+.loc-nut{background:none;border:1px solid var(--line);color:var(--muted);
+  padding:8px 18px;border-radius:2px;font:inherit;font-size:.85rem;cursor:pointer;
+  transition:border-color .25s,color .25s;}
+.loc-nut:hover{color:var(--bone);border-color:var(--muted);}
+.loc-nut.dang-chon{color:var(--ink);background:var(--sand);border-color:var(--sand);}
+.loc-trong{color:var(--muted);font-style:italic;padding:40px 0;}
+
+.bo-luoi{display:grid;grid-template-columns:1fr 1fr;gap:52px 36px;}
+.bo-the{display:block;}
+/* Bắt buộc: .bo-the{display:block} đè lên [hidden] của trình duyệt, nên nút
+   lọc chủ đề đặt t.hidden=true mà thẻ vẫn hiện. Dòng này mới thật sự ẩn. */
+.bo-the[hidden]{display:none;}
+.bo-the-anh{overflow:hidden;border-radius:3px;background:var(--ink-3);aspect-ratio:3/2;}
+.bo-the-anh img{width:100%;height:100%;object-fit:cover;
+  transition:transform .9s var(--ease),filter .5s;}
+.bo-the:hover .bo-the-anh img,
+.bo-the:focus-visible .bo-the-anh img{transform:scale(1.02);}
+.bo-the-chu h2,.bo-the-chu h3{font-size:1.6rem;font-style:italic;margin:18px 0 8px;}
+.bo-the-chu p{color:var(--muted);font-size:.94rem;margin:0;max-width:44ch;}
+.bo-the-meta{display:flex;gap:16px;margin-top:12px !important;font-size:.8rem;color:var(--muted-2);}
+.bo-the-giai{color:var(--sand) !important;font-size:.84rem;margin-top:10px !important;}
+
+/* ---------- ĐẦU TRANG BỘ ẢNH ---------- */
+.bo-dau{padding:150px 0 10px;}
+.bo-lui a{font-size:.82rem;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:3px;}
+.bo-lui a:hover{color:var(--sand);border-color:var(--sand);}
+.bo-dau h1{font-size:clamp(2.2rem,5.5vw,3.8rem);margin:22px 0 0;}
+.bo-dan{color:var(--muted);max-width:58ch;margin:20px 0 0;font-size:1.04rem;}
+.bo-meta{display:flex;gap:18px;flex-wrap:wrap;margin:22px 0 0;font-size:.8rem;color:var(--muted-2);}
+.bo-giai{color:var(--sand);font-size:.9rem;margin:14px 0 0;}
+.bo-than{max-width:62ch;color:var(--muted);margin-top:38px;}
+
+/* ---------- LƯỚI ẢNH TRONG BỘ ----------
+   Ảnh ngang chiếm trọn bề ngang, ảnh dọc chiếm nửa. Thứ tự anh Thọ
+   sắp trong CMS được giữ nguyên — đây là lý do không dùng masonry
+   kiểu CSS columns, vì columns đọc theo cột nên phá thứ tự. */
+.gal{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:56px;}
+.gal-o{margin:0;}
+.gal-o.la-ngang{grid-column:span 2;}
+.gal-mo{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;}
+.gal-mo img{width:100%;height:auto;border-radius:2px;}
+.gal-o figcaption{margin-top:12px;font-size:.84rem;color:var(--muted);}
+
+.bo-cuoi{margin-top:80px;padding-top:44px;border-top:1px solid var(--line);text-align:center;}
+.bo-cuoi p{color:var(--muted);margin:0 0 20px;}
+
+/* ---------- LIGHTBOX ---------- */
+.lb{position:fixed;inset:0;z-index:90;background:rgba(20,14,10,.97);
+  display:flex;align-items:center;justify-content:center;padding:5vh 6vw;}
+.lb[hidden]{display:none;}
+.lb-khung{margin:0;max-width:100%;max-height:90vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:16px;}
+.lb-khung img{max-width:100%;max-height:82vh;width:auto;height:auto;object-fit:contain;}
+.lb-chu{font-size:.86rem;color:var(--muted);text-align:center;max-width:60ch;}
+.lb button{position:absolute;background:none;border:0;color:var(--muted);cursor:pointer;
+  font-size:2.4rem;line-height:1;padding:16px;transition:color .2s;}
+.lb button:hover{color:var(--bone);}
+.lb-dong{top:10px;right:16px;font-size:2.8rem;}
+.lb-truoc{left:6px;top:50%;transform:translateY(-50%);}
+.lb-sau{right:6px;top:50%;transform:translateY(-50%);}
+.lb-dem{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);
+  font-size:.78rem;letter-spacing:.2em;color:var(--muted-2);margin:0;}
+
+/* ============================================================
+   BẢN VÁ cho style.css cũ (xem ghi chú trong HUONG-DAN)
+   ============================================================ */
+
+/* Tương phản: #8a755e chỉ đạt 3.66:1, dưới chuẩn AA cho chữ nhỏ */
+:root{--muted-2:#9d8768;}
+
+/* Bản cũ không có vòng focus nào nhìn thấy được */
+a:focus-visible,button:focus-visible,
+input:focus-visible,select:focus-visible,textarea:focus-visible{
+  outline:2px solid var(--sand);outline-offset:3px;border-radius:2px;
+}
+
+/* Chữ 300 trên nền tối làm dấu tiếng Việt khó đọc */
+body{font-weight:400;}
+
+/* Nav cố định che mất tiêu đề khi nhảy tới anchor */
+[id]{scroll-margin-top:90px;}
+
+/* 100vh làm giật layout khi thanh địa chỉ mobile ẩn/hiện */
+@supports (min-height:100svh){.hero{min-height:100svh;}}
+
+@media (max-width:860px){
+  .bo-luoi{grid-template-columns:1fr;gap:44px;}
+  .gal{grid-template-columns:1fr;gap:28px;}
+  .gal-o.la-ngang{grid-column:span 1;}
+  .bo-dau{padding:120px 0 6px;}
+  .lb{padding:0;}
+  .lb-khung img{max-height:78vh;}
+
+  /* Menu đóng vẫn Tab vào được ở bản cũ — người dùng bàn phím lạc vào menu vô hình */
+  .nav-links{visibility:hidden;}
+  .nav-links.open{visibility:visible;}
+
+  /* Burger chưa từng có trạng thái X dù CSS đã khai báo transition */
+  .burger[aria-expanded="true"] span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+  .burger[aria-expanded="true"] span:nth-child(2){opacity:0;}
+  .burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .bo-the-anh img{transition:none;}
+}
+
+
+/* ---------- TÁC PHẨM NỔI BẬT (trang chủ) ---------- */
+.tp-luoi{display:grid;grid-template-columns:repeat(3,1fr);gap:30px 24px;margin-top:14px;}
+.tp{display:block;}
+.tp-anh{aspect-ratio:1/1;overflow:hidden;border-radius:3px;border:1px solid var(--line);background:var(--ink-3);}
+.tp-anh img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease);}
+.tp:hover .tp-anh img,.tp:focus-visible .tp-anh img{transform:scale(1.05);}
+.tp h3{font-size:1.06rem;font-style:italic;margin:16px 0 5px;}
+.tp p{color:var(--sand);font-size:.82rem;margin:0;line-height:1.5;}
+
+/* ---------- ẢNH MINH HOẠ DỊCH VỤ ---------- */
+.svc.co-anh{padding:0;overflow:hidden;display:flex;flex-direction:column;}
+/* 1:1 — hai ô là ảnh dọc (chân dung, cưới), hai ô là ảnh ngang
+   (sự kiện, doanh nghiệp). Vuông là tỉ lệ duy nhất không hy sinh bên nào. */
+.svc-anh{aspect-ratio:1/1;overflow:hidden;background:var(--ink-3);}
+.svc-anh img{width:100%;height:100%;object-fit:cover;object-position:center 25%;transition:transform .9s var(--ease);}
+.svc.co-anh:hover .svc-anh img{transform:scale(1.04);}
+.svc-chu{padding:30px 34px 36px;}
+
+@media (max-width:860px){
+  .tp-luoi{grid-template-columns:1fr 1fr;gap:24px 16px;}
+  .tp h3{font-size:.98rem;}
+  .svc-chu{padding:24px 24px 28px;}
+}
+@media (prefers-reduced-motion:reduce){
+  .tp-anh img,.svc-anh img{transition:none;}
+}
+
+/* ---------- KHOẢNH KHẮC (trang Về chúng tôi) ---------- */
+.about-moment{margin:36px 0 0;}
+.about-moment img{width:100%;height:auto;border-radius:3px;border:1px solid var(--line);}
+.about-moment figcaption{margin-top:12px;font-size:.86rem;color:var(--muted);}
+.about-moment figcaption a{color:var(--sand);border-bottom:1px solid transparent;}
+.about-moment figcaption a:hover{border-color:var(--sand);}

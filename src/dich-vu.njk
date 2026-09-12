@@ -1,0 +1,81 @@
+---
+permalink: /dich-vu/index.html
+tieu_de: Dịch vụ
+mo_ta_seo: >
+  Dịch vụ chụp ảnh của Phan Media tại Gia Lai: ảnh cưới, chân dung & cá nhân,
+  sự kiện, doanh nghiệp & thương mại. Báo giá theo yêu cầu cụ thể.
+---
+{% extends "base.njk" %}
+
+{% block noi_dung %}
+<header class="page-head">
+  <div class="wrap">
+    <span class="eyebrow">Dịch vụ</span>
+    <h1>Dịch vụ chụp ảnh</h1>
+    <p>Phan Media nhận chụp theo nhiều loại hình. Báo giá tùy theo yêu cầu cụ thể — hãy liên hệ để nhận tư vấn gói phù hợp.</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap">
+    <div class="svc-grid">
+      {% for d in anh.dich_vu %}
+      <div class="svc co-anh reveal">
+        <div class="svc-anh">{% bia d.file, d.alt, "(max-width: 860px) 100vw, 560px" %}</div>
+        <div class="svc-chu">
+          <span class="no">{{ d.so }}</span>
+          <h3>{{ d.ten }}</h3>
+          <p>{{ d.mo_ta }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{# Bộ ảnh dịch vụ — anh Thọ đăng qua CMS, chọn "Thuộc mục: Dự án" là hiện ở đây #}
+{% set du_an = collections.boAnh | theoLoai("du-an") %}
+{% if du_an | length %}
+<section class="section" id="du-an">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Dự án đã thực hiện</span>
+      <h2>Ảnh chụp cho khách hàng</h2>
+      <p>Mỗi bộ là một buổi chụp thật — xem để hình dung phong cách trước khi đặt lịch.</p>
+    </div>
+    <div class="bo-luoi">
+      {% for b in du_an %}
+      {% set alt_bia = b.data | altBia %}
+      <a class="bo-the reveal" href="{{ b.url }}">
+        <div class="bo-the-anh">{% bia b.data.cover, alt_bia %}</div>
+        <div class="bo-the-chu">
+          <h3>{{ b.data.ten }}</h3>
+          <p>{{ b.data.mo_ta }}</p>
+          <p class="bo-the-meta">
+            <span>{{ b.data.anh | length }} ảnh</span>
+            {% if b.data.ngay %}<span>{{ b.data.ngay | nam }}</span>{% endif %}
+          </p>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="section alt tight">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="eyebrow">Quy trình</span><h2>Bốn bước đơn giản</h2></div>
+    <div class="process">
+      <div class="step reveal"><div class="n">01</div><h4>Tư vấn</h4><p>Trao đổi nhu cầu, ngân sách và ý tưởng qua điện thoại hoặc Zalo.</p></div>
+      <div class="step reveal"><div class="n">02</div><h4>Lên concept</h4><p>Thống nhất phong cách, bối cảnh, trang phục và lịch chụp.</p></div>
+      <div class="step reveal"><div class="n">03</div><h4>Buổi chụp</h4><p>Thực hiện buổi chụp thoải mái, tự nhiên, đúng tinh thần đã bàn.</p></div>
+      <div class="step reveal"><div class="n">04</div><h4>Bàn giao</h4><p>Hậu kỳ và bàn giao ảnh chất lượng cao trong thời gian cam kết.</p></div>
+    </div>
+    <div class="cta-band reveal">
+      <h3>Nhận tư vấn gói chụp phù hợp</h3>
+      <a class="btn btn-primary" href="/lien-he/">Liên hệ ngay</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,53 @@
+---
+permalink: /lien-he/index.html
+tieu_de: Liên hệ
+mo_ta_seo: >
+  Liên hệ đặt lịch chụp ảnh với Phan Media — NSNA Phan Minh Thọ. Gò Bồi,
+  Tuy Phước Đông, Gia Lai. Gọi hoặc nhắn Zalo 0976 722 420.
+---
+{% extends "base.njk" %}
+
+{% block noi_dung %}
+<header class="page-head">
+  <div class="wrap">
+    <span class="eyebrow">Liên hệ</span>
+    <h1>Kể cho chúng tôi về buổi chụp của bạn</h1>
+    <p>Để lại thông tin, hoặc gọi / nhắn Zalo trực tiếp — Phan Media sẽ phản hồi sớm nhất.</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap">
+    <div class="contact-grid">
+      <form class="contact-form reveal" id="bookingForm">
+        <div class="field"><label for="name">Họ và tên</label><input type="text" id="name" name="name" required placeholder="Tên của bạn" /></div>
+        <div class="field"><label for="phone">Số điện thoại / Zalo</label><input type="tel" id="phone" name="phone" required placeholder="09xx xxx xxx" /></div>
+        <div class="field"><label for="type">Loại hình chụp</label>
+          <select id="type" name="type">
+            <option>Chân dung &amp; Cá nhân</option>
+            <option>Ảnh Cưới</option>
+            <option>Sự kiện</option>
+            <option>Doanh nghiệp &amp; Thương mại</option>
+            <option>Khác</option>
+          </select>
+        </div>
+        <div class="field"><label for="date">Ngày dự kiến</label><input type="date" id="date" name="date" /></div>
+        <div class="field"><label for="msg">Mô tả mong muốn</label><textarea id="msg" name="msg" placeholder="Bạn hình dung buổi chụp như thế nào?"></textarea></div>
+        <div class="form-actions"><button type="submit" class="btn btn-primary">Gửi yêu cầu qua Zalo</button></div>
+      </form>
+
+      <div class="contact-info reveal">
+        <div class="info-block"><div class="k">Điện thoại · Zalo</div><div class="v"><a href="tel:{{ site.zalo }}">0976 722 420</a></div></div>
+        <div class="info-block"><div class="k">Địa chỉ</div><div class="v">Đội 20, Gò Bồi,<br/>Tuy Phước Đông, Gia Lai</div></div>
+        <div class="info-block"><div class="k">Theo dõi</div>
+          <div class="socials">
+            {% for m in site.mang_xa_hoi %}
+            <a href="{{ m }}" target="_blank" rel="noopener">{{ ["Facebook","Instagram","YouTube","TikTok"][loop.index0] }}</a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
