@@ -80,12 +80,26 @@ có chú thích**, không phải một tấm ghép có chữ in.
 
 Máy soát không có mạng nên chỉ kiểm tra được phần tĩnh: YAML/JSON hợp lệ,
 125 đường dẫn ảnh trong `.md` và `.json` đều có file thật, không tấm nào trùng
-hay thiếu alt, JS không lỗi cú pháp. Nunjucks có dựng nổi hay không phải
-`npm install && npm start` mới biết. Nếu build đổ, ba chỗ nghi trước:
+hay thiếu alt, JS không lỗi cú pháp, thẻ Nunjucks cân đối. Nunjucks có dựng
+nổi hay không phải `npm install && npm start` mới biết.
 
-- `{% bia b.data.cover, b.data | altBia %}` — truyền filter làm tham số shortcode
-- `{% bia anh.tac_pham_noi_bat[1].file, ... %}` — ngoặc vuông trong tham số
-- `src/sitemap.njk` gọi `p.url.endsWith("/")`
+**Lỗi build-logic đã bắt được ngày 12/09 khi soát lại:** năm trang chính dùng
+`layout: base.njk` kết hợp `{% block noi_dung %}`, nhưng `base.njk` chỉ có
+`{% block %}` chứ không có `{{ content }}`. Với cơ chế layout của Eleventy,
+block trong trang con không đè được block trong layout — kết quả là cả năm
+trang sẽ **trống rỗng bên trong `<main>`**. Đã đổi năm trang sang
+`{% extends "base.njk" %}` (cùng cách bo-anh.njk đang dùng), và thêm
+`{{ content | safe }}` vào block của base.njk làm đường lui.
+
+Các chỗ cú pháp "không chắc" đã được viết lại thành dạng an toàn: filter
+gán vào biến trước rồi mới truyền vào shortcode; sitemap lọc trang trong
+`eleventy.config.js` (collection `trangSitemap`) thay vì gọi method chuỗi
+trong template.
+
+### Repo Git
+
+Thư mục đã `git init` (nhánh `main`) và commit sẵn 176 file. Đẩy lên GitHub
+theo `CACH-DUA-LEN-WEB.md`. `.gitattributes` khoá LF và đánh dấu ảnh là binary.
 
 ## Câu hỏi còn treo
 
