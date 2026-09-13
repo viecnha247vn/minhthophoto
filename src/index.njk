@@ -9,7 +9,7 @@ mo_ta_seo: >
 {% extends "base.njk" %}
 
 {% block noi_dung %}
-<header class="hero" id="top" style="--hero-img:url('{{ anh.hero }}')">
+<header class="hero" id="top" style="--hero-img:url('{{ hinh.hero }}')">
   <div class="wrap hero-inner">
     <span class="eyebrow">Nhiếp ảnh nghệ thuật · Khoảnh khắc đời thường</span>
     <h1><span class="nsna">NSNA</span>Phan Minh Thọ</h1>
@@ -27,7 +27,7 @@ mo_ta_seo: >
   <div class="wrap">
     <div class="profile reveal">
       <div class="profile-photo">
-        {% bia anh.chan_dung_ho_so, "Nghệ sĩ nhiếp ảnh Phan Minh Thọ trong bộ vest đen, cầm chiếc máy ảnh phim Minolta", "(max-width: 860px) 100vw, 420px" %}
+        {% bia hinh.chan_dung_ho_so, "Nghệ sĩ nhiếp ảnh Phan Minh Thọ trong bộ vest đen, cầm chiếc máy ảnh phim Minolta", "(max-width: 860px) 100vw, 420px" %}
       </div>
       <div class="profile-body">
         <span class="eyebrow">Hồ sơ nghệ sĩ</span>
@@ -75,7 +75,7 @@ mo_ta_seo: >
     </div>
 
     <div class="tp-luoi reveal">
-      {% for t in anh.tac_pham_noi_bat %}
+      {% for t in hinh.tac_pham_noi_bat %}
       <a class="tp" href="/nghe-thuat/">
         <div class="tp-anh">{% bia t.file, t.alt, "(max-width: 860px) 45vw, 360px" %}</div>
         <h3>{{ t.ten }}</h3>
@@ -92,7 +92,7 @@ mo_ta_seo: >
   <div class="wrap">
     <div class="previews">
       <a class="preview reveal" href="/nghe-thuat/">
-        {% set anh_xem_truoc = anh.tac_pham_noi_bat[1] %}
+        {% set anh_xem_truoc = hinh.tac_pham_noi_bat[1] %}
         <div class="pimg">{% bia anh_xem_truoc.file, "", "(max-width: 860px) 100vw, 560px" %}</div>
         <div class="pbody">
           <span class="eyebrow">Nghệ thuật</span>
@@ -102,7 +102,7 @@ mo_ta_seo: >
         </div>
       </a>
       <a class="preview reveal" href="/dich-vu/">
-        <div class="pimg">{% bia anh.hero, "", "(max-width: 860px) 100vw, 560px" %}</div>
+        <div class="pimg">{% bia hinh.hero, "", "(max-width: 860px) 100vw, 560px" %}</div>
         <div class="pbody">
           <span class="eyebrow">Dịch vụ</span>
           <h3>Đặt lịch chụp ảnh</h3>

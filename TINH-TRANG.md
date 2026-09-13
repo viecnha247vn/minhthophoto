@@ -53,8 +53,9 @@ có chú thích**, không phải một tấm ghép có chữ in.
 
 - `eleventy.config.js` — shortcode `anh` (ảnh trong bộ), `bia` (ảnh bìa,
   nhận `sizes`), filter `theoLoai`, `altBia`, `dateXML`, `ngayVN`, `nam`
-- `src/_data/anh.json` — mọi ảnh cố định của site (hero, chân dung, tác phẩm
-  nổi bật, ảnh minh hoạ dịch vụ). Đổi ảnh trang chủ là sửa ở đây, không đụng template
+- `src/_data/hinh.json` — mọi ảnh cố định của site (hero, chân dung, tác phẩm
+  nổi bật, ảnh minh hoạ dịch vụ). Đổi ảnh trang chủ là sửa ở đây, không đụng template.
+  **Không được đặt tên file này là `anh.json`** — xem mục lỗi build dưới đây
 - `src/_data/site.json` — tên miền (`goc`), điện thoại, mạng xã hội.
   `robots.txt` và `sitemap.xml` đều lấy `goc` từ đây
 - `src/bo-anh/bo-anh.json` — layout + permalink cho mọi bộ
@@ -95,6 +96,24 @@ Các chỗ cú pháp "không chắc" đã được viết lại thành dạng an
 gán vào biến trước rồi mới truyền vào shortcode; sitemap lọc trang trong
 `eleventy.config.js` (collection `trangSitemap`) thay vì gọi method chuỗi
 trong template.
+
+### Lỗi build thật, đã sửa 13/09
+
+Deploy đầu trên Vercel đổ với `(data.anh || []).find is not a function`.
+Nguyên nhân: file dữ liệu toàn cục `src/_data/anh.json` tạo ra biến `anh` là
+một **object**, trong khi mỗi bộ ảnh có khoá front matter `anh` là một **mảng**.
+Eleventy 3 bật deep data merge mặc định, nên hai giá trị bị trộn vào nhau và
+kết quả không còn là mảng — `.find` và cả `{% for %}` đều hỏng. Lỗi này sẽ
+ảnh hưởng mọi trang bộ ảnh, không riêng trang Dịch vụ.
+
+Đã đổi tên file thành `src/_data/hinh.json`, biến dùng trong template là
+`hinh.hero`, `hinh.dich_vu`, `hinh.tac_pham_noi_bat`, `hinh.chan_dung_ho_so`,
+`hinh.chan_dung_gioi_thieu`. Filter `altBia` cũng đã viết lại để không đổ
+build kể cả khi nhận dữ liệu sai kiểu.
+
+Bài học: **không đặt tên file trong `src/_data/` trùng với bất kỳ khoá front
+matter nào đang dùng.** Các khoá đang dùng: `ten`, `hien`, `loai`, `ngay`,
+`cover`, `tags`, `giai_thuong`, `mo_ta`, `anh`.
 
 ### Repo Git
 

@@ -118,8 +118,9 @@ module.exports = function (eleventyConfig) {
 
   /** Alt của ảnh bìa = alt của chính tấm đó trong bộ, không lấy tên bộ. */
   eleventyConfig.addFilter("altBia", (data) => {
-    const a = (data.anh || []).find((x) => x.file === data.cover);
-    return a && a.alt ? a.alt : data.ten;
+    const ds = Array.isArray(data && data.anh) ? data.anh : [];
+    const a = ds.find((x) => x && x.file === data.cover);
+    return a && a.alt ? a.alt : (data && data.ten) || "";
   });
 
   /** Các trang HTML cho sitemap: URL kết thúc bằng "/" (bỏ robots, sitemap, file). */
