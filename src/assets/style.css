@@ -225,8 +225,8 @@ h1,h2,h3{font-family:"Fraunces",Georgia,serif;font-weight:500;line-height:1.1;ma
   .nav-links a{font-size:1.05rem;}
   .burger{display:block;}
   .previews,.about-grid,.contact-grid,.svc-grid{grid-template-columns:1fr;}
-  .profile{grid-template-columns:1fr;gap:30px;}
-  .profile-photo{max-width:260px;}
+  .profile{grid-template-columns:1fr;gap:30px;justify-items:start;}
+  .profile-photo{max-width:240px;}
   .awardlist{grid-template-columns:1fr;}
   .process{grid-template-columns:1fr 1fr;}
   .work-wide,.work-tall{grid-column:span 12;}
@@ -253,10 +253,11 @@ h1,h2,h3{font-family:"Fraunces",Georgia,serif;font-weight:500;line-height:1.1;ma
 @media (max-width:860px){ .footer .fright{align-items:flex-start;text-align:left;} }
 
 /* ---------------- HỒ SƠ NGHỆ SĨ + THÀNH TÍCH ---------------- */
-.profile{display:grid;grid-template-columns:minmax(0,300px) 1fr;gap:52px;align-items:center;}
-/* Giữ nguyên tỉ lệ 2:3 của file gốc — cắt sang 3/4 thì mất máy ảnh dưới tay.
-   Cột khoá ở 300px để chân dung không lấn phần chữ. */
-.profile-photo img{width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:4px;border:1px solid var(--line);}
+.profile{display:grid;grid-template-columns:240px 1fr;gap:52px;align-items:center;}
+/* File gốc đã lấy khuôn sẵn (mặt trên, máy ảnh giữa) nên hiện trọn, không cắt.
+   240x360 = đúng tỉ lệ 2:3 của ảnh. */
+.profile-photo img{width:240px;height:360px;object-fit:cover;
+  border-radius:4px;border:1px solid var(--line);display:block;}
 .profile-body h2{font-size:clamp(1.7rem,3.6vw,2.6rem);margin:12px 0 22px;}
 .creds{list-style:none;padding:0;margin:0 0 30px;display:flex;flex-direction:column;gap:11px;}
 .creds li{position:relative;padding-left:24px;color:var(--bone);font-weight:400;}
@@ -276,7 +277,7 @@ h1,h2,h3{font-family:"Fraunces",Georgia,serif;font-weight:500;line-height:1.1;ma
 
 /* mobile override cho mục hồ sơ (đặt sau base để thắng thứ tự) */
 @media (max-width:860px){
-  .profile{grid-template-columns:1fr;gap:30px;}
+  .profile{grid-template-columns:1fr;gap:30px;justify-items:start;}
   .profile-photo{max-width:240px;}
   .awardlist{grid-template-columns:1fr;gap:0;}
 }
