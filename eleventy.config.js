@@ -56,6 +56,13 @@ module.exports = function (eleventyConfig) {
       .sort((a, b) => new Date(b.data.ngay) - new Date(a.data.ngay))
   );
 
+  eleventyConfig.addCollection("baiViet", (api) =>
+    api
+      .getFilteredByGlob("src/bai-viet/*.md")
+      .filter((x) => x.data.hien !== false)
+      .sort((a, b) => new Date(b.data.ngay) - new Date(a.data.ngay))
+  );
+
   /**
    * Một ảnh trong bộ. Kích thước thật dùng cho hai việc:
    *  - width/height => trình duyệt chừa sẵn chỗ, trang không giật khi ảnh về

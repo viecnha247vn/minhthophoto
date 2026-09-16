@@ -69,6 +69,7 @@
     {%- set la_bo = '/bo-anh' in page.url %}
     <a href="/nghe-thuat/" {{ 'class=active aria-current=page' | safe if '/nghe-thuat' in page.url or (la_bo and loai != 'du-an') }}>Nghệ thuật</a>
     <a href="/dich-vu/"    {{ 'class=active aria-current=page' | safe if '/dich-vu' in page.url or (la_bo and loai == 'du-an') }}>Dịch vụ</a>
+    <a href="/bai-viet/"   {{ 'class=active aria-current=page' | safe if '/bai-viet' in page.url }}>Bài viết</a>
     <a href="/ve-chung-toi/" {{ 'class=active aria-current=page' | safe if '/ve-chung-toi' in page.url }}>Về chúng tôi</a>
     <a href="/lien-he/" class="nav-cta {{ 'active' if '/lien-he' in page.url }}">Liên hệ</a>
   </div>
@@ -88,7 +89,7 @@
     <div class="fcol">
       <span class="fb">NSNA Phan Minh Thọ</span>
       <div class="fnav">
-        <a href="/">Trang chủ</a><a href="/nghe-thuat/">Nghệ thuật</a><a href="/dich-vu/">Dịch vụ</a><a href="/ve-chung-toi/">Về chúng tôi</a><a href="/lien-he/">Liên hệ</a>
+        <a href="/">Trang chủ</a><a href="/nghe-thuat/">Nghệ thuật</a><a href="/dich-vu/">Dịch vụ</a><a href="/bai-viet/">Bài viết</a><a href="/ve-chung-toi/">Về chúng tôi</a><a href="/lien-he/">Liên hệ</a>
       </div>
     </div>
     <div class="fcol fright">

@@ -38,6 +38,67 @@ slug:
   sanitize_replacement: "-"
 
 collections:
+  - name: bai-viet
+    label: Bài viết
+    label_singular: bài viết
+    folder: src/bai-viet
+    create: true
+    slug: "{{slug}}"
+    identifier_field: tieu_de
+    summary: "{{tieu_de}}"
+    sortable_fields: [ngay, tieu_de]
+    view_filters:
+      - label: Dẫn nguồn báo
+        field: nguon
+        pattern: ".+"
+      - label: Đang ẩn
+        field: hien
+        pattern: false
+    fields:
+      - label: Tiêu đề
+        name: tieu_de
+        widget: string
+
+      - label: Hiện trên website
+        name: hien
+        widget: boolean
+        default: true
+
+      - label: Nguồn
+        name: nguon
+        widget: string
+        required: false
+        hint: >
+          Tên tờ báo nếu là bài dẫn nguồn, ví dụ "Báo Gia Lai". Bài anh tự
+          viết thì để trống.
+
+      - label: Ngày
+        name: ngay
+        widget: datetime
+        date_format: DD.MM.YYYY
+        time_format: false
+        picker_utc: true
+
+      - label: Link bài gốc
+        name: lien_ket
+        widget: string
+        required: false
+        hint: >
+          Dán link bài báo vào đây thì thẻ trên web bấm vào là mở báo gốc.
+          Bài anh tự viết thì để TRỐNG và viết nội dung ở ô dưới.
+
+      - label: Đoạn giới thiệu
+        name: mo_ta
+        widget: text
+        required: false
+        hint: Hai ba câu tóm ý, hiện ngay dưới tiêu đề.
+
+      - label: Nội dung bài
+        name: body
+        widget: markdown
+        required: false
+        hint: Chỉ dùng cho bài anh tự viết. Bài dẫn nguồn thì để trống.
+
   - name: bo-anh
     label: Bộ ảnh
     label_singular: Bộ ảnh

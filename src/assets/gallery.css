@@ -152,3 +152,34 @@ body{font-weight:400;}
 .about-moment figcaption{margin-top:12px;font-size:.86rem;color:var(--muted);}
 .about-moment figcaption a{color:var(--sand);border-bottom:1px solid transparent;}
 .about-moment figcaption a:hover{border-color:var(--sand);}
+
+/* ---------- BÀI VIẾT ---------- */
+.bv-danh-sach{list-style:none;margin:0;padding:0;display:grid;gap:18px;}
+.bv-muc{margin:0;}
+.bv-the{display:block;padding:26px 28px;background:var(--ink-2);border:1px solid var(--line);
+  border-radius:4px;transition:border-color .3s var(--ease),transform .3s var(--ease);}
+.bv-the:hover{border-color:var(--sand);transform:translateY(-2px);}
+.bv-meta{margin:0 0 10px;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2);}
+.bv-nguon{color:var(--sand);}
+.bv-ngay::before{content:"·";margin:0 8px;color:var(--muted-2);}
+.bv-the h2{font-size:1.32rem;line-height:1.35;margin:0 0 10px;font-style:italic;}
+.bv-mo-ta{margin:0 0 14px;color:var(--muted);font-size:.95rem;}
+.bv-doc{font-size:.85rem;color:var(--sand);}
+
+.bv-than{max-width:720px;}
+.bv-than h1{font-size:clamp(1.7rem,3.4vw,2.4rem);line-height:1.25;margin:10px 0 20px;}
+.bv-dan{color:var(--muted);font-size:1.02rem;margin:0 0 26px;}
+.bv-noi-dung p{margin:0 0 18px;}
+.bv-noi-dung img{width:100%;height:auto;border-radius:3px;margin:8px 0 22px;}
+
+/* ---------- VIDEO NHÚNG ---------- */
+.video-nhung{margin:40px 0 0;}
+.video-khung{position:relative;aspect-ratio:16/9;border-radius:4px;overflow:hidden;
+  border:1px solid var(--line);background:#000;}
+.video-khung iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+.video-nhung figcaption{margin-top:12px;font-size:.86rem;color:var(--muted);}
+
+@media (max-width:640px){
+  .bv-the{padding:20px 20px;}
+  .bv-the h2{font-size:1.15rem;}
+}

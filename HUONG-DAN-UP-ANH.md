@@ -69,3 +69,16 @@ Lưu ý: quá trình nén **xoá thông tin EXIF/IPTC** trong file — máy ản
 | Đăng xong mà web chưa đổi | Chờ 2–3 phút. Quá 10 phút vẫn chưa thấy thì báo lại |
 | Kéo ảnh vào báo lỗi dung lượng | File trên 25MB. Xuất lại trong Lightroom ở cạnh dài 3000px là thoải mái |
 | Lỡ xoá nhầm một bộ | Báo lại — vẫn khôi phục được, mọi thay đổi đều có lưu lịch sử |
+
+## Thêm bài viết
+
+Vào `/admin`, chọn **Bài viết** ở cột trái, bấm **New bài viết**.
+
+**Dẫn nguồn một bài báo** — điền Tiêu đề, Nguồn (tên tờ báo), Ngày, dán link
+vào ô **Link bài gốc**, viết hai ba câu vào **Đoạn giới thiệu**. Bỏ trống ô
+Nội dung bài. Thẻ trên web bấm vào là mở báo gốc ở tab mới.
+
+**Tự viết một bài** — điền Tiêu đề, Ngày, bỏ trống Nguồn và Link bài gốc,
+viết vào ô **Nội dung bài**. Web sẽ tạo một trang riêng cho bài đó.
+
+Bài mới nhất tự lên đầu danh sách, xếp theo Ngày.

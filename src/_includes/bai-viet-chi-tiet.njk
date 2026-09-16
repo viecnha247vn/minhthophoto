@@ -1,0 +1,19 @@
+{% extends "base.njk" %}
+
+{% set mo_ta_seo = mo_ta %}
+{% set og_loai = "article" %}
+
+{% block noi_dung %}
+<article class="section">
+  <div class="wrap bv-than">
+    <p class="bv-meta">
+      <span class="bv-nguon">{{ nguon if nguon else "Phan Minh Thọ" }}</span>
+      {% if ngay %}<span class="bv-ngay">{{ ngay | ngayVN }}</span>{% endif %}
+    </p>
+    <h1>{{ tieu_de }}</h1>
+    {% if mo_ta %}<p class="bv-dan">{{ mo_ta }}</p>{% endif %}
+    <div class="bv-noi-dung">{{ content | safe }}</div>
+    <p class="bo-lui"><a href="/bai-viet/">Bài viết</a></p>
+  </div>
+</article>
+{% endblock %}

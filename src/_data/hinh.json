@@ -1,6 +1,7 @@
 {
   "_ghi_chu": "MỌI ĐƯỜNG DẪN ẢNH CỐ ĐỊNH CỦA SITE NẰM Ở ĐÂY. Mục nào còn CHO_THAY_ANH là đang dùng ảnh cũ làm tạm — khi có ảnh mới, chép vào src/media/trang/ rồi sửa đường dẫn ở dưới, không phải đụng template.",
   "hero": "/media/trang/hinh-nen-web.webp",
+  "dat_lich_chup_anh": "/media/trang/dat-lich-chup-anh.webp",
   "chan_dung_ho_so": "/media/trang/chan-dung-minh-tho.webp",
   "chan_dung_gioi_thieu": "/media/trang/chan-dung-minh-tho.webp",
   "tac_pham_noi_bat": [

@@ -1,0 +1,24 @@
+CÁCH KÉO LÊN GITHUB
+===================
+
+Trong thư mục này có đúng 20 file cần cập nhật, đã nằm sẵn trong
+cấu trúc thư mục giống repo. KHÔNG có file nào khác, nên kéo lên
+sẽ không xoá hay đè mất thứ gì đang chạy.
+
+1. Mở github.com/viecnha247vn/minhthophoto
+2. Bấm Add file  ->  Upload files
+   (đứng ở TRANG GỐC của repo, không vào thư mục con nào)
+3. Mở thư mục "cap-nhat" này ra, chọn TẤT CẢ những gì bên trong:
+      admin        src
+      eleventy.config.js
+      HUONG-DAN-UP-ANH.md
+      TINH-TRANG.md
+   rồi kéo cả nhóm đó thả vào khung upload trên GitHub.
+   (Không kéo thư mục "cap-nhat", mà kéo những thứ BÊN TRONG nó.)
+4. GitHub tự giữ đường dẫn: src/bai-viet/... sẽ vào đúng src/bai-viet/...
+5. Gõ mô tả rồi bấm Commit changes.
+
+File DOC-TRUOC.txt này không cần kéo lên.
+
+Sau đó Vercel tự build lại, khoảng 1-2 phút.
+Mở web rồi nhấn Cmd + Shift + R.

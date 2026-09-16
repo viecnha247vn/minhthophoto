@@ -1,6 +1,6 @@
 # Tình trạng dự án
 
-*Cập nhật: 12/09/2026. Đọc file này trước nếu tiếp tục dự án ở một cuộc
+*Cập nhật: 13/09/2026. Đọc file này trước nếu tiếp tục dự án ở một cuộc
 trò chuyện mới — nó thay cho toàn bộ lịch sử trao đổi.*
 
 ## Đây là gì
@@ -31,6 +31,14 @@ xếp theo đề tài. Thứ tự trên trang do `ngay` quyết định (mới n
 
 **Dự án** (`loai: du-an`, hiện ở cuối trang `/dich-vu/#du-an`) — 4 bộ, 49 ảnh:
 Ảnh cưới (28), Chân dung (15), Doanh nghiệp (4), Sự kiện (3).
+
+**Bài viết** — collection thứ hai, `src/bai-viet/*.md`, trang `/bai-viet/`.
+Mỗi bài có `lien_ket` thì là bài dẫn nguồn báo khác: **không sinh trang
+riêng** (`permalink: false` do `bai-viet.11tydata.js` tính), thẻ trỏ thẳng ra
+báo gốc, mở tab mới. Không có `lien_ket` thì là bài anh Thọ tự viết, sinh
+trang `/bai-viet/<slug>/`. Hiện có 3 bài dẫn nguồn: Báo Gia Lai (Festival
+Nhiếp ảnh trẻ 2025), Văn Nghệ Gia Lai (Hoa trổ trên sông), Tạp chí Văn nghệ
+Bình Định số 133 (PDF ảnh bìa).
 
 Giải thưởng ghi ở hai chỗ: `giai_thuong` của bộ (hiện dưới tên bộ) và
 `chu_thich` của tấm đoạt giải (hiện dưới ảnh và trong lightbox).

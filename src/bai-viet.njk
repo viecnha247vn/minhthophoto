@@ -1,0 +1,45 @@
+---
+permalink: /bai-viet/index.html
+tieu_de: Bài viết
+mo_ta_seo: >
+  Báo chí viết về nghệ sĩ nhiếp ảnh Phan Minh Thọ, cùng những bài chia sẻ
+  của anh về nghề ảnh — Phan Media, Gia Lai.
+---
+{% extends "base.njk" %}
+
+{% block noi_dung %}
+<header class="page-head">
+  <div class="wrap">
+    <span class="eyebrow">Bài viết</span>
+    <h1>Báo chí &amp; chia sẻ</h1>
+    <p>Những bài báo viết về Phan Minh Thọ và các tác phẩm của anh, cùng đôi điều anh tự viết về nghề ảnh.</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap">
+    {% set cac_bai = collections.baiViet %}
+    {% if cac_bai | length %}
+    <ul class="bv-danh-sach">
+      {% for b in cac_bai %}
+      {%- set ngoai = b.data.lien_ket %}
+      <li class="bv-muc">
+        <a class="bv-the" href="{{ ngoai if ngoai else b.url }}"
+           {% if ngoai %}target="_blank" rel="noopener"{% endif %}>
+          <p class="bv-meta">
+            <span class="bv-nguon">{{ b.data.nguon if b.data.nguon else "Phan Minh Thọ" }}</span>
+            {% if b.data.ngay %}<span class="bv-ngay">{{ b.data.ngay | ngayVN }}</span>{% endif %}
+          </p>
+          <h2>{{ b.data.tieu_de }}</h2>
+          {% if b.data.mo_ta %}<p class="bv-mo-ta">{{ b.data.mo_ta }}</p>{% endif %}
+          <span class="bv-doc">{{ "Đọc trên " + b.data.nguon if ngoai else "Đọc bài" }} &rarr;</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="loc-trong">Chưa có bài viết nào.</p>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}
