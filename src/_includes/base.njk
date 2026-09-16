@@ -1,3 +1,7 @@
+{#- Bài dẫn nguồn báo khác có permalink:false nên page.url là rỗng. Nunjucks
+    không cho dùng toán tử "in" với giá trị rỗng, nên mọi chỗ cần đường dẫn
+    đều đi qua `duong` — đã có mặc định là chuỗi rỗng. -#}
+{%- set duong = page.url | default("", true) %}
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -6,14 +10,14 @@
 
 <title>{{ tieu_de }} · NSNA Phan Minh Thọ — Phan Media</title>
 <meta name="description" content="{{ mo_ta_seo }}" />
-<link rel="canonical" href="{{ site.goc }}{{ page.url }}" />
+<link rel="canonical" href="{{ site.goc }}{{ duong }}" />
 
 <meta property="og:type" content="{{ og_loai | default('website') }}" />
 <meta property="og:site_name" content="Phan Media" />
 <meta property="og:locale" content="vi_VN" />
 <meta property="og:title" content="{{ tieu_de }} · NSNA Phan Minh Thọ" />
 <meta property="og:description" content="{{ mo_ta_seo }}" />
-<meta property="og:url" content="{{ site.goc }}{{ page.url }}" />
+<meta property="og:url" content="{{ site.goc }}{{ duong }}" />
 <meta property="og:image" content="{{ og_anh | default(site.goc + site.og_mac_dinh) }}" />
 <meta name="twitter:card" content="summary_large_image" />
 
@@ -59,19 +63,19 @@
 
 <a class="bo-qua" href="#noi-dung">Bỏ qua phần đầu trang</a>
 
-<nav class="nav {{ 'solid' if page.url != '/' }}" id="nav">
+<nav class="nav {{ 'solid' if duong != '/' }}" id="nav">
   <a class="brand" href="/">
     <img class="brand-logo" src="/assets/logo.png" alt="" width="620" height="357" />
     <span class="brand-name">Minh Thọ Photographer</span>
   </a>
   <div class="nav-links" id="navLinks">
-    <a href="/"            {{ 'class=active aria-current=page' | safe if page.url == '/' }}>Trang chủ</a>
-    {%- set la_bo = '/bo-anh' in page.url %}
-    <a href="/nghe-thuat/" {{ 'class=active aria-current=page' | safe if '/nghe-thuat' in page.url or (la_bo and loai != 'du-an') }}>Nghệ thuật</a>
-    <a href="/dich-vu/"    {{ 'class=active aria-current=page' | safe if '/dich-vu' in page.url or (la_bo and loai == 'du-an') }}>Dịch vụ</a>
-    <a href="/bai-viet/"   {{ 'class=active aria-current=page' | safe if '/bai-viet' in page.url }}>Bài viết</a>
-    <a href="/ve-chung-toi/" {{ 'class=active aria-current=page' | safe if '/ve-chung-toi' in page.url }}>Về chúng tôi</a>
-    <a href="/lien-he/" class="nav-cta {{ 'active' if '/lien-he' in page.url }}">Liên hệ</a>
+    {%- set la_bo = '/bo-anh' in duong %}
+    <a href="/"            {{ 'class=active aria-current=page' | safe if duong == '/' }}>Trang chủ</a>
+    <a href="/nghe-thuat/" {{ 'class=active aria-current=page' | safe if '/nghe-thuat' in duong or (la_bo and loai != 'du-an') }}>Nghệ thuật</a>
+    <a href="/dich-vu/"    {{ 'class=active aria-current=page' | safe if '/dich-vu' in duong or (la_bo and loai == 'du-an') }}>Dịch vụ</a>
+    <a href="/bai-viet/"   {{ 'class=active aria-current=page' | safe if '/bai-viet' in duong }}>Bài viết</a>
+    <a href="/ve-chung-toi/" {{ 'class=active aria-current=page' | safe if '/ve-chung-toi' in duong }}>Về chúng tôi</a>
+    <a href="/lien-he/" class="nav-cta {{ 'active' if '/lien-he' in duong }}">Liên hệ</a>
   </div>
   <button class="burger" id="burger" aria-label="Mở menu" aria-expanded="false" aria-controls="navLinks">
     <span></span><span></span><span></span>

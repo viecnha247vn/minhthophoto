@@ -123,6 +123,24 @@ Bài học: **không đặt tên file trong `src/_data/` trùng với bất kỳ
 matter nào đang dùng.** Các khoá đang dùng: `ten`, `hien`, `loai`, `ngay`,
 `cover`, `tags`, `giai_thuong`, `mo_ta`, `anh`.
 
+### Lỗi build thật, đã sửa 16/09
+
+Thêm mục Bài viết làm build đổ với
+`Cannot use "in" operator to search for "/bo-anh" in unexpected types`.
+
+Nguyên nhân: ba bài dẫn nguồn báo khác có `permalink: false`, nên `page.url`
+của chúng là rỗng. Thanh menu trong `base.njk` lại kiểm tra
+`'/bo-anh' in page.url` — Nunjucks không cho dùng toán tử `in` với giá trị
+rỗng. Trang vẫn render qua layout dù không ghi ra file, nên vẫn nổ.
+
+Đã gom về một biến khai báo ở đầu `base.njk`:
+`{% set duong = page.url | default("", true) %}`, và mọi chỗ cần đường dẫn
+(canonical, og:url, nav solid, sáu link menu) đều dùng `duong`. Không còn
+`page.url` trần trong template nào.
+
+Bài học: **bất cứ template nào có thể chạy với `permalink: false` thì không
+được dùng `page.url` trực tiếp.**
+
 ### Repo Git
 
 Thư mục đã `git init` (nhánh `main`) và commit sẵn 176 file. Đẩy lên GitHub
